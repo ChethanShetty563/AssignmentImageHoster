@@ -27,6 +27,9 @@ public class ImageController {
     @Autowired
     private TagService tagService;
 
+    String error = "Only the owner of the image can edit the image";
+    String error1 = "Only the owner of the image can delete the image";
+
     //This method displays all the images in the user home page after successful login
     @RequestMapping("images")
     public String getUserImages(Model model) {
