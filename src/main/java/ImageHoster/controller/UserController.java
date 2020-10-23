@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Controller
@@ -78,5 +80,22 @@ public class UserController {
         List<Image> images = imageService.getAllImages();
         model.addAttribute("images", images);
         return "index";
+    }
+
+    //    This method check for the password specification
+//    This method return true if the password contains 1 alphabet and 1 special character and 1 number
+//    else returns false
+    private boolean passwordCheck(String password) {
+        String regexpression = "^(?=.{3,})(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[@#$%^&+=]).*$";
+        Pattern p = Pattern.compile(regexpression);
+
+        if(password == null)
+        {
+            return false;
+        }
+        Matcher m = p.matcher(password);
+        System.out.println(password);
+        System.out.println(m.matches());
+        return m.matches();
     }
 }
