@@ -39,6 +39,7 @@ public class CommentController {
         model.addAttribute("image", image);
         model.addAttribute("tags", image.getTags());
         model.addAttribute("comments",image.getComments());
+        System.out.print("got it");
         return "redirect:/images/{id}/{title}";
     }
 
