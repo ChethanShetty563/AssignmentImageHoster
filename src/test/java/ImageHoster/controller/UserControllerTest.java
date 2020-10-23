@@ -58,13 +58,17 @@ public class UserControllerTest {
         user.setProfile(userProfile);
         user.setId(1);
         user.setUsername("Abhi");
-        user.setPassword("password");
 
+        String password[] = {"111","aaa","@@@","1aa","1@@","@@a","1","@a"};
 
-        this.mockMvc.perform(post("/users/registration")
-                .flashAttr("user", user)
-        )
-                .andExpect(model().attribute("passwordTypeError", equalTo("Password must contain atleast 1 alphabet, 1 number & 1 special character")));
+        for (int i = 0; i < password.length; i++) {
+            user.setPassword(password[i]);
+
+            this.mockMvc.perform(post("/users/registration")
+                    .flashAttr("user", user)
+            )
+                    .andExpect(model().attribute("passwordTypeError", equalTo("Password must contain atleast 1 alphabet, 1 number & 1 special character")));
+        }
     }
 
     //This test checks the controller logic for user signup when user fills the form and send the POST request to the server with the correct password type and checks whether the logic returns the html file 'users/login.html'
