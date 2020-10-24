@@ -22,7 +22,7 @@
             <input type="submit" value="Delete"/>
         </form>
         <!-- Show the delete error if the non owner of the image is trying to delete the image-->
-<!--        Uncomment the below code to show the error if the non owner of the image is trying to delete the image-->
+        <!--Uncomment the below code to show the error if the non owner of the image is trying to delete the image-->
         <div th:if="${deleteError}">Only the owner of the image can delete the image</div>
     </div>
 </nav>
@@ -52,7 +52,7 @@
             </li>
         </ul>
 
-        <!--<h5 class="f4 mb0 underline">Comments</h5>-->
+        <h5 class="f4 mb0 underline">Comments</h5>
         <!-- A form to upload a comment to a particular image-->
         <form method="POST" enctype="multipart/form-data"
               th:action="'/image/'+ ${image.id} + '/' + ${image.title} + '/comments'">
@@ -70,10 +70,10 @@
 
         <!-- A piece of code displaying all the comments to a particular image-->
         <div class="comments mt5">
-            <article class="ba b&#45;&#45;black-10 mv4" th:each="comment : ${comments}">
+            <article class="ba b--black-10 mv4" th:each="comment : ${comments}">
                 <h1 class="f4 bg-light-gray black-80 mv0 pv2 ph3" th:text="${comment.user.username} + ' says'">Title of
                     card</h1>
-                <div class="pa3 bt b&#45;&#45;black-10">
+                <div class="pa3 bt b--black-10">
                     <p class="f6 f5-ns lh-copy measure" th:text="${comment.text}">
                         text
                     </p>
@@ -88,5 +88,3 @@
 </div>
 </body>
 </html>
-
-
